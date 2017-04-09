@@ -1,1 +1,1 @@
-# justwe7.github.io
+# https://justwe7.github.io
