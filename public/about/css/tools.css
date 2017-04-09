@@ -1,0 +1,23 @@
+.mgauto{
+    margin: 0 auto;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.lineblock{
+    display:inline-block;
+}
+.img_group{
+    background: url(../img/touming.png) no-repeat;
+}
