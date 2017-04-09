@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 是像个二货啊喂
 subtitle:
 description:
 author: Huaxi Li
@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://justwe7.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
