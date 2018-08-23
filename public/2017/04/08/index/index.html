@@ -1,56 +1,68 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html style="display: none;" lang="zh">
     <head>
-    <!-- 
+    <meta charset="utf-8">
+    <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
-        Version: 1.3.0 -->
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- Title -->
     
     <title>
         
-            doge&#39; | 
+            jQquery常用语法自用总结 | 
         
-        是像个二货啊喂
+        我学不动了
     </title>
 
     <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
-    <link rel="icon" sizes="192x192" href="/img/favicon.ico">
-    <link rel="apple-touch-icon" href="/img/favicon.ico">
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
 
-    <!-- Meta & Info -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",js,jq">
     <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="Huaxi Li">
-    <meta name="description" content="null">
-    <meta name="keywords" content="前端开发,web,HTML,HTML5,CSS,javascript,李华西,js,jq">
 
-    <!--iOS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="是像个二货啊喂">
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://justwe7.github.io">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="doge&#39; | 是像个二货啊喂">
-    <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="js"> <meta property="og:article:tag" content="jq"> 
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -60,16 +72,34 @@
         
     <![endif]-->
 
-    <!-- Import CSS -->
-    <link rel="stylesheet" href="/css/material.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-    <!-- Config CSS -->
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
 
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
 
 <!-- Other Styles -->
 <style>
   body, html {
     font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   }
 
   a {
@@ -127,6 +157,7 @@
     color: #00838F;
     text-decoration: underline;
   }
+
 </style>
 
 
@@ -134,7 +165,7 @@
 
     <style>
       body{
-        background-color: #f7f8fa;
+        background-color: #F5F5F5;
       }
 
       /* blog_info bottom background */
@@ -165,28 +196,109 @@
     </style>
 
 
+<!-- Import Font -->
+<!-- Import Roboto -->
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/queue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
-    <!-- UC Browser Compatible -->
-    <script>
-        var agent = navigator.userAgent.toLowerCase();
-        if(agent.indexOf('ucbrowser')>0) {
-            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="我学不动了">
+    <meta name="msapplication-starturl" content="https://justwe7.github.io/2017/04/08/index/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="我学不动了">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://justwe7.github.io/2017/04/08/index/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="jQquery常用语法自用总结 | 我学不动了">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="js"> <meta property="og:article:tag" content="jq"> 
+
+    
+        <meta property="article:published_time" content="Sat Apr 08 2017 20:41:51 GMT+0800">
+        <meta property="article:modified_time" content="Wed Aug 22 2018 17:08:26 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://justwe7.github.io/2017/04/08/index/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://justwe7.github.io/2017/04/08/index/index.html",
+    "headline": "jQquery常用语法自用总结",
+    "datePublished": "Sat Apr 08 2017 20:41:51 GMT+0800",
+    "dateModified": "Wed Aug 22 2018 17:08:26 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Huaxi Li",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "我学不动了",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
         }
-    </script>
+    },
+    "keywords": ",js,jq",
+    "description": "",
+}
+</script>
+
 
     
 
+    <!-- Analytics -->
     
-
-    <!-- Bing Background -->
+    
     
 
     <!-- Custom Head -->
     
+
 </head>
 
 
@@ -204,7 +316,7 @@
                     
                         <!-- Hamburger Button -->
                         <button class="MD-burger-icon sidebar-toggle">
-                            <span class="MD-burger-layer"></span>
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
                         </button>
                     
 
@@ -227,21 +339,19 @@
     </div>
     -->
 
+
     <!-- Left aligned menu below button -->
+    
+    
     <button id="post-toc-trigger-btn"
         class="mdl-button mdl-js-button mdl-button--icon">
         <i class="material-icons">format_list_numbered</i>
     </button>
 
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#我的第一个标签页"><span class="post-toc-number">1.</span> <span class="post-toc-text">我的第一个标签页</span></a></li></ol>
-
-        <!--
-        <li class="mdl-menu__item">
-            Some Action
-        </li>
-        -->
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jQquery常用语法自用"><span class="post-toc-number">1.</span> <span class="post-toc-text">jQquery常用语法自用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择器：是js的核心。jQuery-query-是个对象-选择出来的为一个数组。"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">选择器：是js的核心。jQuery ($/query) 是个对象,选择出来的为一个数组。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本语法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 基本语法 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#层叠（级）选择器"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 层叠（级）选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本过滤选择器"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 基本过滤选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内容过滤选择器"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 内容过滤选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可视化过滤选择器"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> 可视化过滤选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性过滤选择器。可以使用多个属性进行联合选择"><span class="post-toc-number">1.7.</span> <span class="post-toc-text"> 属性过滤选择器。可以使用多个属性进行联合选择 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#子元素过滤选择器"><span class="post-toc-number">1.8.</span> <span class="post-toc-text"> 子元素过滤选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单元素选择器"><span class="post-toc-number">1.9.</span> <span class="post-toc-text"> 表单元素选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单元素过滤选择器"><span class="post-toc-number">1.10.</span> <span class="post-toc-text"> 表单元素过滤选择器 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用例子"><span class="post-toc-number">1.11.</span> <span class="post-toc-text"> 使用例子 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方法总结"><span class="post-toc-number">1.12.</span> <span class="post-toc-text"> 方法总结 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件汇总"><span class="post-toc-number">1.13.</span> <span class="post-toc-text"> 事件汇总 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具方法。既可以在-对象上使用，也可以在原生上使用。"><span class="post-toc-number">1.14.</span> <span class="post-toc-text"> 工具方法。既可以在$对象上使用，也可以在原生上使用。 </span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运动"><span class="post-toc-number">1.15.</span> <span class="post-toc-text"> 运动 </span></a></li></ol></li></ol>
     </ul>
+    
 
 
 
@@ -262,7 +372,7 @@
         <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.jpg)">
     
             <p class="article-headline-p">
-                doge'
+                jQquery常用语法自用总结
             </p>
         </div>
 
@@ -276,7 +386,7 @@
 
     <!-- Author Avatar -->
     <div id="author-avatar">
-        <img src="/img/justwe.jpg" width="44px" height="44px" alt="Author Avatar"/>
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
     </div>
     <!-- Author Name & Date -->
     <div>
@@ -310,7 +420,8 @@
     
 
     <!-- Share -->
-    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
     <i class="material-icons" role="presentation">share</i>
     <span class="visuallyhidden">share</span>
 </button>
@@ -321,7 +432,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=doge&#39;&url=https://justwe7.github.io//2017/04/08/index/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=jQquery常用语法自用总结&url=https://justwe7.github.io/2017/04/08/index/index.html&pic=https://justwe7.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +441,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=doge&#39;&url=https://justwe7.github.io//2017/04/08/index/index.html&via=Huaxi Li" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=jQquery常用语法自用总结&url=https://justwe7.github.io/2017/04/08/index/index.html&via=Huaxi Li" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -339,7 +450,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://justwe7.github.io//2017/04/08/index/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://justwe7.github.io/2017/04/08/index/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -348,7 +459,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://justwe7.github.io//2017/04/08/index/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://justwe7.github.io/2017/04/08/index/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -360,17 +471,12 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=是像个二货啊喂&title=doge&#39;&summary=null&pics=https://justwe7.github.io/img/favicon.ico&url=https://justwe7.github.io/2017/04/08/index/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 QQ
-            </li>
-        </a>
-    
 
     <!-- Share Telegram -->
     
 </ul>
 
+    
 </div>
 
                 
@@ -378,7 +484,685 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="我的第一个标签页"><a href="#我的第一个标签页" class="headerlink" title="我的第一个标签页"></a>我的第一个标签页</h1>
+        <h1 id="jQquery常用语法自用"><a href="#jQquery常用语法自用" class="headerlink" title="jQquery常用语法自用"></a>jQquery常用语法自用</h1><h2 id="选择器：是js的核心。jQuery-query-是个对象-选择出来的为一个数组。"><a href="#选择器：是js的核心。jQuery-query-是个对象-选择出来的为一个数组。" class="headerlink" title="选择器：是js的核心。jQuery ($/query) 是个对象,选择出来的为一个数组。"></a>选择器：是js的核心。jQuery ($/query) 是个对象,选择出来的为一个数组。</h2><h2 id="基本语法"><a href="#基本语法" class="headerlink" title=" 基本语法 "></a><strong> 基本语法 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“#myELement”)</td>
+<td>选择id值等于myElement的元素，id值不能重复在文档中只能有一个id值是myElement所以得到的是唯一的元素</td>
+</tr>
+<tr>
+<td>$(“div”)</td>
+<td>选择所有的div标签元素，返回div元素数组</td>
+</tr>
+<tr>
+<td>$(“.myClass”)</td>
+<td>选择使用myClass类的css的所有元素</td>
+</tr>
+<tr>
+<td>$(“*”)</td>
+<td>选择文档中的所有的元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="层叠（级）选择器"><a href="#层叠（级）选择器" class="headerlink" title=" 层叠（级）选择器 "></a><strong> 层叠（级）选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“parent child”)</td>
+<td>选择所有的parent元素中的child元素 。选择某个父级下的子级(所有)可以为多级</td>
+</tr>
+<tr>
+<td>$(“#main &gt; *”)</td>
+<td>选择id值为main的所有的子元素，不为多级</td>
+</tr>
+<tr>
+<td>$(“label + input”)</td>
+<td>选择所有的label元素的下一个input元素节点，经测试选择器返回的是label标签后面直接跟一个input标签的所有input标签元素</td>
+</tr>
+<tr>
+<td>$(“#prev ~ div”)</td>
+<td>选择所有的id为prev的标签元素之后的所有div元素节点标签</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基本过滤选择器"><a href="#基本过滤选择器" class="headerlink" title=" 基本过滤选择器 "></a><strong> 基本过滤选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“tr:first”)</td>
+<td>选择所有tr元素的第一个</td>
+</tr>
+<tr>
+<td>$(“tr:last”)</td>
+<td>选择所有tr元素的最后一个</td>
+</tr>
+<tr>
+<td>$(“input:not(:</td>
+<td>checked) + span”) 过滤掉：checked的选择器的所有的input元素。这个选择的是span，（未被选中的元素的下一个）</td>
+</tr>
+<tr>
+<td>$(“tr:even”)</td>
+<td>选择所有的tr元素的第0，2，4… …个元素（注意：因为所选择的多个元素时为数组，所以序号是从0开始）</td>
+</tr>
+<tr>
+<td>$(“tr:odd”)</td>
+<td>选择所有的tr元素的第1，3，5… …个元素</td>
+</tr>
+<tr>
+<td>$(“td:eq(2)”)</td>
+<td>选择所有的td元素中序号为2的那个td元素 ，eq(A)中的A可以传入变量如索引值</td>
+</tr>
+<tr>
+<td>$(“td:gt(4)”)</td>
+<td>选择td元素中序号从0开始计数大于4的所有td元素,传参为负数后往前找（版本1.8之前是不支持负数的），-2选的是倒数第1个，递减</td>
+</tr>
+<tr>
+<td>$(“td:lt(4)”)</td>
+<td>选择td元素中序号小于4不含4的所有的td元素</td>
+</tr>
+<tr>
+<td>$(“:header”)</td>
+<td>选择所有标题元素，像h1, h2, h3 等</td>
+</tr>
+<tr>
+<td>$(“div:animated”)</td>
+<td>选择所有正在执行动画效果的元素</td>
+</tr>
+<tr>
+<td>$(‘:focus’)</td>
+<td>选择当前获取焦点的元素。</td>
+</tr>
+<tr>
+<td>$(‘span:first-of-type’)</td>
+<td>查找所有标签下的第一个span</td>
+</tr>
+<tr>
+<td>$(‘:first-child’)</td>
+<td>找到所有标签的第一个子元素。如果在：的前面写一个指定标签，那么不一定能够获取的到</td>
+</tr>
+<tr>
+<td>$(‘span:first’)</td>
+<td>查找所有span中的第一个span</td>
+</tr>
+</tbody>
+</table>
+<h2 id="内容过滤选择器"><a href="#内容过滤选择器" class="headerlink" title=" 内容过滤选择器 "></a><strong> 内容过滤选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div:contains(‘John’)”)</td>
+<td>选择所有div中含有John文本的元素 $(“标签名:contains(‘标签内的内容’)”)</td>
+</tr>
+<tr>
+<td>$(“td:empty”)</td>
+<td>选择所有的为空（也不包括文本节点）的td元素的数组</td>
+</tr>
+<tr>
+<td>$(“div:has(p)”)</td>
+<td>选择所有含有p标签的div元素</td>
+</tr>
+<tr>
+<td>$(“td:parent”)</td>
+<td>选择所有的以td为父节点的元素数组</td>
+</tr>
+</tbody>
+</table>
+<h2 id="可视化过滤选择器"><a href="#可视化过滤选择器" class="headerlink" title=" 可视化过滤选择器 "></a><strong> 可视化过滤选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div:hidden”)</td>
+<td>选择所有的被hidden的div元素</td>
+</tr>
+<tr>
+<td>$(“div:visible”)</td>
+<td>选择所有的可视化的div元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="属性过滤选择器。可以使用多个属性进行联合选择"><a href="#属性过滤选择器。可以使用多个属性进行联合选择" class="headerlink" title=" 属性过滤选择器。可以使用多个属性进行联合选择 "></a><strong> 属性过滤选择器。可以使用多个属性进行联合选择 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“div[id]”)</td>
+<td>选择所有含有id属性的div元素</td>
+</tr>
+<tr>
+<td>$(‘input:file’)</td>
+<td>找到属性为file的input</td>
+</tr>
+<tr>
+<td>$(‘input:disabled’)</td>
+<td>选择input中属性为disabled的元素。</td>
+</tr>
+<tr>
+<td>$(“input[name=’newsletter’]”)</td>
+<td>选择所有的name属性等于’newsletter’的input元素</td>
+</tr>
+<tr>
+<td>$(“input[name!=’newsletter’]”)</td>
+<td>选择所有的name属性不等于’newsletter’的input元素</td>
+</tr>
+<tr>
+<td>$( “input[miaov&#124;=’aaa’]”)</td>
+<td>选择指定属性值等于aaa或以aaa为前缀（该aaa后跟一个连字符“-” ）的元素</td>
+</tr>
+<tr>
+<td>$(“input[name^=’news’]”)</td>
+<td>选择所有的name属性以’news’开头的input元素</td>
+</tr>
+<tr>
+<td>$(“input[name$=’news’]”)</td>
+<td>选择所有的name属性以’news’结尾的input元素</td>
+</tr>
+<tr>
+<td>$(“input[name*=’man’]”)</td>
+<td>选择所有的name属性包含’news’的input元素</td>
+</tr>
+<tr>
+<td>$[attribute~=’value’]</td>
+<td>选择input中属性名为value并且两边有空格的所有元素（包括只有属性值的，如果value开头前面也属于空格）</td>
+</tr>
+<tr>
+<td>$(“input[id][name$=’man’]”)</td>
+<td>可以使用多个属性进行联合选择，该选择器是得到所有的含有id属性并且那么属性以man结尾的元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="子元素过滤选择器"><a href="#子元素过滤选择器" class="headerlink" title=" 子元素过滤选择器 "></a><strong> 子元素过滤选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(‘:first-child’)</td>
+<td>找到所有标签的第一个子元素。  $(“div span:first-child”) 返回所有的div元素的第一个子节点的数组</td>
+</tr>
+<tr>
+<td>$(‘:first-child’)</td>
+<td>找到所有标签的最后一个子元素。  $(“div span:last-child”) 返回所有的div元素的最后一个节点的数组</td>
+</tr>
+<tr>
+<td>$(“div button:only-child”)</td>
+<td>返回所有的div中只有唯一一个子节点的所有子节点的数组</td>
+</tr>
+<tr>
+<td>$(“ul li:nth-child(2)”)</td>
+<td>ul下标为2的li元素</td>
+</tr>
+<tr>
+<td>$(“ul li:nth-child(odd)”)</td>
+<td>偶数</td>
+</tr>
+<tr>
+<td>$(“ul li:nth-child(3n + 1)”)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="表单元素选择器"><a href="#表单元素选择器" class="headerlink" title=" 表单元素选择器 "></a><strong> 表单元素选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“:input”)</td>
+<td>选择所有的表单输入元素，包括input, textarea, select 和 button……</td>
+</tr>
+<tr>
+<td>$(“:text”)</td>
+<td>选择所有的text input元素</td>
+</tr>
+<tr>
+<td>$(“:password”)</td>
+<td>选择所有的password input元素</td>
+</tr>
+<tr>
+<td>$(“:radio”)</td>
+<td>选择所有的radio input元素</td>
+</tr>
+<tr>
+<td>$(“:checkbox”)</td>
+<td>选择所有的checkbox input元素</td>
+</tr>
+<tr>
+<td>$(“:submit”)</td>
+<td>选择所有的submit input元素</td>
+</tr>
+<tr>
+<td>$(“:image”)</td>
+<td>选择所有的image input元素</td>
+</tr>
+<tr>
+<td>$(“:reset”)</td>
+<td>选择所有的reset input元素</td>
+</tr>
+<tr>
+<td>$(“:button”)</td>
+<td>选择所有的button input元素</td>
+</tr>
+<tr>
+<td>$(“:file”)</td>
+<td>选择所有的file input元素</td>
+</tr>
+<tr>
+<td>$(“:hidden”)</td>
+<td>选择所有类型为hidden的input元素或表单的隐藏域</td>
+</tr>
+</tbody>
+</table>
+<h2 id="表单元素过滤选择器"><a href="#表单元素过滤选择器" class="headerlink" title=" 表单元素过滤选择器 "></a><strong> 表单元素过滤选择器 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“:enabled”)</td>
+<td>选择所有的可操作的表单元素</td>
+</tr>
+<tr>
+<td>$(“:disabled”)</td>
+<td>选择所有的不可操作的表单元素</td>
+</tr>
+<tr>
+<td>$(“:checked”)</td>
+<td>选择所有的被checked的表单元素</td>
+</tr>
+<tr>
+<td>$(“select option:selected”)</td>
+<td>选择所有的select 的子元素中被selected的元素</td>
+</tr>
+<tr>
+<td>$(”input[@ name =xxx]“).parent().prev().text()</td>
+<td>选取一个 name 为”xxx”的input text框的上一个td的text值</td>
+</tr>
+<tr>
+<td>$(”input[@ name ^=’S_’]“).not(”[@ name $=’_R’]“)</td>
+<td>名字以”S_”开始，并且不是以”_R”结尾的</td>
+</tr>
+<tr>
+<td>$(”input[@ name =radio_01][@checked]“).val();</td>
+<td>一个名为 radio_01的radio所选的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="使用例子"><a href="#使用例子" class="headerlink" title=" 使用例子 "></a><strong> 使用例子 </strong></h2><pre><code>HTML 代码:
+&lt;form&gt;
+&lt;label&gt;Name:&lt;/label&gt;
+&lt;input name=&quot;name&quot; /&gt;
+&lt;fieldset&gt;
+      &lt;label&gt;Newsletter:&lt;/label&gt;
+      &lt;input name=&quot;newsletter&quot; /&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;
+&lt;input name=&quot;none&quot; /&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(“A B”)</td>
+<td>查找A元素下面的所有子节点，包括非直接子节点。例子：找到表单中所有的 input 元素 jQuery 代码: $(“form input”) 结果: [ <code>&lt;input name=&quot;name&quot; /&gt;, &lt;input name=&quot;newsletter&quot; /&gt;</code> ]</td>
+</tr>
+<tr>
+<td>$(“A&gt;B”)</td>
+<td>查找A元素下面的直接子节点。  例子：匹配表单中所有的子级input元素。jQuery 代码: $(“form &gt; input”) 结果: [ <code>&lt;input name=&quot;name&quot; /&gt;</code> ]</td>
+</tr>
+<tr>
+<td>$(“A+B”)</td>
+<td>查找A元素后面的兄弟节点，包括非直接子节点。 例子：匹配所有跟在 label 后面的 input 元素 jQuery 代码:$(“label + input”) 结果:[ <code>&lt;input name=&quot;name&quot; /&gt;, &lt;input name=&quot;newsletter&quot; /&gt;</code> ]</td>
+</tr>
+<tr>
+<td>$(“A~B”)</td>
+<td>查找A元素后面的兄弟节点，不包括非直接子节点。  例子：找到所有与表单同辈的 input 元素 jQuery 代码: $(“form ~ input”)  结果: [ <code>&lt;input name=&quot;none&quot; /&gt;</code> ]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="方法总结"><a href="#方法总结" class="headerlink" title=" 方法总结 "></a><strong> 方法总结 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(‘li’).slice(1,3)</td>
+<td>选择指定范围的元素。第一个参数：起始位置。第二个参数：结束的位置（但不包括结束位置）。</td>
+</tr>
+<tr>
+<td>$(‘li’).first()</td>
+<td>li集合中的第一个li</td>
+</tr>
+<tr>
+<td>$(‘li’).last()</td>
+<td>li集合中的倒数第一个li</td>
+</tr>
+<tr>
+<td>$(‘ul’).children()</td>
+<td>ul下的子元素。选择的只是一级</td>
+</tr>
+<tr>
+<td>$(‘ul’).find(‘li’)</td>
+<td>ul下的li子元素选择父元素下的所有。与$(‘ulli’)功能差不多是从右往左查找的，所有从性能的角度来说，效率并不高。而使用$(‘ul’).find(‘li’)的时候是根据某个元素下的某些元素去查找的（类似于我们通过某个元素下去getElementsByTagName()。建议使用find的方式去获取一些复杂的元素。</td>
+</tr>
+<tr>
+<td>$(‘p’).parent()</td>
+<td>选择当前p元素的父级。</td>
+</tr>
+<tr>
+<td>$(‘p’).parents()</td>
+<td>选择当前元素的所有祖先级节点。</td>
+</tr>
+<tr>
+<td>$(‘p’).closest(‘.box’)</td>
+<td>找的是最近的唯一一个父级元素(不过也包含自身)</td>
+</tr>
+<tr>
+<td>$(‘.box’).append(oDiv)</td>
+<td>往某个父级元素内的后面添加一个元素     oDiv.appendTo(‘.box’) 区别是改变了this</td>
+</tr>
+<tr>
+<td>$(‘.box’).prepend(oDiv)</td>
+<td>往某个父级元素里的首位添加一个元素      prependTo()</td>
+</tr>
+<tr>
+<td>$(‘.box’).before(oDiv)</td>
+<td>往某个元素的前面添加一个元素         insertBefore()</td>
+</tr>
+<tr>
+<td>$(‘.box’).after(oDiv)</td>
+<td>往某个元素的后面添加一个元素         insertAfter()</td>
+</tr>
+<tr>
+<td>append/appendTo区别</td>
+<td>（其他几个，比如：before/insertBefore） append 如果在之后还要去操作元素，那么这个时候的this为.box appendTo 如果在之后还要去操作元素，那么这个时候的this为要添加的元素</td>
+</tr>
+<tr>
+<td>$(‘#div1’).remove()</td>
+<td>要删除的元素.remove()</td>
+</tr>
+<tr>
+<td>oLi.clone()</td>
+<td>克隆元素,如要复制还需要再append，默认的情况下，不能clone事件,如果在()内传入true，会将克隆对象的事件给克隆出来。</td>
+</tr>
+<tr>
+<td>$(‘div span’).index()</td>
+<td>返回的值为div下的第一个span的下标 1.index的返回值，为兄弟中的排行（数值会随着位置的改变而变化）2.在使用index()的时候，在括号中应当，把要查找的索引元素具体化。</td>
+</tr>
+<tr>
+<td>$(‘li’).get(0).innerHTML = ‘’</td>
+<td>转原生js方法，可以获取offset等属性 get()，可以改为[]下标</td>
+</tr>
+<tr>
+<td>$(‘li’).css(‘width’,’100px’)</td>
+<td>将li设置width为100px ，如果不写100px会只是获取到宽度，如果设置多个可以将样式设置为json格式</td>
+</tr>
+<tr>
+<td>$(‘li’).Width/height(100)</td>
+<td>将li设置height为100px ，不传入参数返回原来设置的高度，数值为number，不包括padding、border</td>
+</tr>
+<tr>
+<td>innerWidth()innerHeight(100)</td>
+<td>跟clientHeight/clientWidth一样，不包括边框（只包括自身的宽高+padding）在写操作的时候，注意设置的宽高为自身宽高+padding的总和，比如：padding = 10px  $(obj).innerWidth(200),自身的宽度为180，因为有20像素的padding</td>
+</tr>
+<tr>
+<td>outerWidth() /outerHeight(100)</td>
+<td>自身宽高 + padding + boder 类似于offsetWidth/offsetHeight  获取宽高都能够在隐藏的时候，获取到。可视区：$(window).innerHeight()  整个文档的高度：$(document).innerHeight()</td>
+</tr>
+<tr>
+<td>$(window).scrollTop()</td>
+<td>窗口滚动条距离，已经计算过滚动条的值</td>
+</tr>
+<tr>
+<td>$(obj).offset().left/top</td>
+<td>对象的绝对位置</td>
+</tr>
+<tr>
+<td>$(obj).position().left/top</td>
+<td>相对于定位父级到元素的距离。如果元素值有margin值，那么这个距离是找不到的。</td>
+</tr>
+<tr>
+<td>$(‘obj’).offsetParent().attr(‘id’)</td>
+<td>找定位父级（元素），可以通过attr获取属性</td>
+</tr>
+<tr>
+<td>$(‘span’).wrap(‘<code>&lt;oDiv&gt;</code>‘);</td>
+<td>将span标签用div包起来，先创建div $(‘被包的一个对象’)wrap(壳): 将某个元素包在某个标签里面。</td>
+</tr>
+<tr>
+<td>$(‘span’).wrapAll(‘<code>&lt;div&gt;</code>‘);</td>
+<td>$(‘被包的一堆对象’).wrapAll(壳)</td>
+</tr>
+<tr>
+<td>$(‘div’).wrapInner(‘<code>&lt;span&gt;</code>‘)</td>
+<td>$(壳).wrapInner(被包的标签)；在匹配元素里的内容外包一层结构。</td>
+</tr>
+<tr>
+<td>$(‘span’).unwrap(‘div’);</td>
+<td>把包在这个对象上的壳，去掉。$(‘被包的一个对象’).unwrap(‘壳’); 注意：如果壳为body是删不掉的。</td>
+</tr>
+<tr>
+<td>$(‘#div1’).html(‘’);</td>
+<td>清空div内的内容，也可以用来传参设置内容</td>
+</tr>
+<tr>
+<td>$(‘#div1’).empty();</td>
+<td>清空div内的所有子节点，不可恢复  下面有对应可恢复的</td>
+</tr>
+<tr>
+<td>$(‘#div1’).detach();</td>
+<td>移除#div元素，保存所有的jq数据与其关联，可以用来再次添加   var oP = $(‘#div1’).find(‘p’).detach();  $(‘#div1’).append(oP);</td>
+</tr>
+<tr>
+<td>$(‘#div1’).text(‘<code>&lt;b&gt;B&lt;/b&gt;</code>‘)</td>
+<td>只获取文本信息。设置：也会将原来元素中的内容覆盖，并且以字符串的方式输出到页面。 （浏览器不读标签）</td>
+</tr>
+<tr>
+<td>$(‘div’).replaceWith($(‘p’))</td>
+<td>将div标签替换为p标签（如果有），但会将原来的div删除掉，相当于剪切，否则只是删除  参数是要替换的标签</td>
+</tr>
+<tr>
+<td>$(‘p’).replaceAll($(‘div’))</td>
+<td>将p标签替换为div标签（如果有），与replaceWith相同</td>
+</tr>
+<tr>
+<td>$(‘#home’).find(‘a’).end().find(‘b’)</td>
+<td>找到#home下的a和b链式操作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="事件汇总"><a href="#事件汇总" class="headerlink" title=" 事件汇总 "></a><strong> 事件汇总 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(‘#div1’).on(‘click’,function)  $(‘#div1’).click(function)</td>
+<td>给div1加一个点击事件，如果要同时加多个可以在’click’之后空格添加另一个触发。事件之后可以加一个自定义的属性，如”click.hhh”相当于click事件正常调用，但是解除的时候也解除可以只解除这个不改变别的click</td>
+</tr>
+<tr>
+<td>$(‘#div1’).off(‘click’);</td>
+<td>解除事件绑定：如果off()的括号中传入指定的事件名，那么就是解除指定的事件绑定函数，如果不传，解除所有的事件。在某个元素下有多个事件绑定函数的时候，如果为多个事件：那么off()括号中放上要解除的事件名。单个事件：那么要在单个事件的不同事件绑定函数内设置一个“自定义”的属性，那么在解除的时候，某个事件.“自定义”属性</td>
+</tr>
+<tr>
+<td>$(‘#div1’).hover(fn1,fn2);</td>
+<td>将移入移出绑定到一起，如果函数调用了动画，最好在两个动画之前添加stop解决快速移入移出问题$(selector).hover(handlerIn, handlerOut)是$(selector).mouseenter(handlerIn).mouseleave(handlerOut);简写</td>
+</tr>
+<tr>
+<td>$(‘obj’).one(‘click’,function(){alert(8)}</td>
+<td>对象添加一次的事件，执行之后就没有了，比如可以用来做按钮点击失效</td>
+</tr>
+<tr>
+<td>Event对象</td>
+<td>$(document).click(function(ev){console.log(ev.pageY)}  ev.clientX/ev.clientY获取的值是根据可视区宽高来决定的。可视区宽高     ev.pageX/ev.pageY 获取的值是根据整个文档宽高来决定的。文档宽高    ev.which:获取键盘值。 $(ev.target).css(‘background’,’red’) 事件源操作，可以改变子元素原生的兼容ev.target &#124;&#124; ev.srcElement</td>
+</tr>
+<tr>
+<td>阻止冒泡</td>
+<td>①.ev.stopPropagation()   只阻止事件往上冒泡，不阻止事件本身  ②.return false    不仅阻止了事件往上冒泡，而且阻止了事件本身.阻止默认事件、阻止冒泡都可以用return false来阻止。</td>
+</tr>
+<tr>
+<td>事件委托，为未来的元素添加事件</td>
+<td>$(‘ul’).delegate(‘li’,’click’,function(ev){alert(ev.target.innerHTML)})之后dom创建的也可以绑定到这个事件      $(‘ul’).on(‘click’,’li’,function(ev){alert(ev.target.innerHTML)})  和delegate作业相同1.7版本jq新增</td>
+</tr>
+<tr>
+<td>解除事件委托</td>
+<td>$(‘ul’).delegate(‘#clos’,’click’,function(ev){$(ev.delegateTarget).undelegate();})  解除事件委托  此处ev.delegateTarget是ul  $(‘input:button’).eq(1).click(function () {$($(‘ul’)).undelegate();} $(要解除的对象).undelegate</td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>根据绑定到匹配元素的给定的事件类型执行所有的处理程序和行为  $(‘#div1’).on(‘mouseover.aaa’,function(){alert(‘1123’);});  $(‘#div2’).click(function(){$(‘#div1’).trigger(‘mouseover.aaa’);})  相当于div2调用了div1的aaa属性函数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="工具方法。既可以在-对象上使用，也可以在原生上使用。"><a href="#工具方法。既可以在-对象上使用，也可以在原生上使用。" class="headerlink" title=" 工具方法。既可以在$对象上使用，也可以在原生上使用。 "></a><strong> 工具方法。既可以在$对象上使用，也可以在原生上使用。 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$.type()</td>
+<td>查看数据是什么类型的。比typeof更直观。</td>
+</tr>
+<tr>
+<td>$.isFunction()</td>
+<td>查看数据是否为函数。如果是返回true否则返回false</td>
+</tr>
+<tr>
+<td>$.isNumeric(str)</td>
+<td>查看数据是否为数字（或是纯数字的字符串）。如果是返回true否则返回false</td>
+</tr>
+<tr>
+<td>$.isArray()</td>
+<td>是否数组</td>
+</tr>
+<tr>
+<td>$.isWindow()</td>
+<td>是否window对象</td>
+</tr>
+<tr>
+<td>$.isEmptyObject()</td>
+<td>查看是不是对象类型的数据：也包括null</td>
+</tr>
+<tr>
+<td>$. isPlainObject({})</td>
+<td>查看是不是自变量（{}）的对象。</td>
+</tr>
+<tr>
+<td>$.extend(true,’被定义的对象’,’要被拷贝的对象’);</td>
+<td>当需要深拷贝的时候，在extend()中的第一个参数加上true</td>
+</tr>
+<tr>
+<td>$.proxy(fn1,document)(a,b);</td>
+<td>函数改变this指向。也可以这样写$.proxy(fn1,window,1,2)();</td>
+</tr>
+<tr>
+<td>$.parseHTML(‘str’)</td>
+<td>转出来的标签为原生对象   有各种属性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="运动"><a href="#运动" class="headerlink" title=" 运动 "></a><strong> 运动 </strong></h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>显示隐藏</td>
+<td>$(‘#div1’).hide(‘slow’);隐藏 ‘fast’    200   /   ‘normal’  400   /    ‘slow’    600  参数对应  $(‘#div1’).show(200); 显示  $(‘#div1’).toggle();隐藏+显示，自带开关  toggle的这些方法，都会主动判断某个元素是否显示或隐藏，根据当前元素的属性来做运动。</td>
+</tr>
+<tr>
+<td>渐变隐藏</td>
+<td>$(‘#div1’).fadeOut(‘normal’);</td>
+</tr>
+<tr>
+<td>渐变显示</td>
+<td>$(‘#div1’).fadeIn(5000);   5s</td>
+</tr>
+<tr>
+<td>滑动效果</td>
+<td>$(‘#div1’).slideDown();  下滑动  $(‘#div1’).slideUp();上滑动  $(‘#div1’).slideToggle(2000) 会主动判断执行上/下滑动</td>
+</tr>
+<tr>
+<td>运动函数</td>
+<td>$(‘#div1’).animate({width:200},{duration:500,easing:’swing’,complete:function(){$(‘#div1’).animate({height:300})},step:function(a,b){})$(‘obj’).animate({css},speed,callback);  duration：运动的时间  easing：运动的形式(swing:缓冲 linear：匀速两种)    complete：运动之后的回调函数    step：运动时的细节信息参数a代表变化属性的当前值，b代表一个集合，b.pos 运动时0-1的比例。 可以据此设置一个数值随运动增加的效果</td>
+</tr>
+<tr>
+<td>运动队列</td>
+<td>逐行写一遍顺序执行的效果会按队列的方式执行运动或者直接用“.”连接   $(‘#div1’).animate({width:200}).animate({height:200});</td>
+</tr>
+<tr>
+<td>运动延时</td>
+<td>运动与运动之前设置一个延迟执行的时间。   $(‘#div1’).animate({width:200}).delay(1000).animate({height:200});</td>
+</tr>
+<tr>
+<td>运动停止</td>
+<td>.stop(string,false,false)  ①.停止的名称如{width:100}  ②.是否取消后续的效果，默认否  ③.是否立即完成当前动画，默认否  加在动画调用之前可以用来作为一个开关  $(‘#div1’).animate({width:1200},1000).animate({height:200}).animate({opacity:0});  设置动画  $(‘input’).eq(0).mouseover(function () {$(‘#div1’).stop({width:1200},false,true)})    取消动画</td>
+</tr>
+<tr>
+<td>运动完成</td>
+<td>.finish(string)  提前快速执行完运动效果。传参会停止这个$(‘input’).eq(0).mouseover(function () {$(‘#div1’).finish({width:1200})</td>
+</tr>
+<tr>
+<td>监听动画结束</td>
+<td>$(‘obj’).one(‘webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend’, function(){  });</td>
+</tr>
+</tbody>
+</table>
+
+        
     
 
     
@@ -390,10 +1174,6 @@
                 <!-- Post Comments -->
                 
                     
-
-
-
-
                 
             </div>
 
@@ -401,7 +1181,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/04/09/hello-world/" id="post_nav-newer" class="prev-content">
+        <a href="/2018/08/22/hello-world/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -445,12 +1225,12 @@
 
     <!-- Sidebar Avatar -->
     <div class="sidebar-image">
-        <img src="/img/justwe.jpg" alt="Huaxi Li's avatar">
+        <img src="/img/avatar.png" alt="Huaxi Li's avatar">
     </div>
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        x13133053566@163.com
+        youremail@email.com
         <b class="caret"></b>
     </a>
 </div>
@@ -463,7 +1243,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="mailto:x13133053566@163.com" target="_blank" title="Email Me">
+                    <a href="#" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -477,7 +1257,7 @@
     <!-- Homepage -->
     
         <li id="sidebar-first-li">
-            <a href="/" target="_self">
+            <a href="/">
                 
                     <i class="material-icons sidebar-material-icons">home</i>
                 
@@ -499,7 +1279,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -507,35 +1287,8 @@
 
     <!-- Categories  -->
     
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
-                
-                分类
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                <a class="sidebar_archives-link" href="/categories/jq/">jq<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/js/">js<span class="sidebar_archives-count">1</span></a>
-            </ul>
-        </li>
-        
-            <li class="divider"></li>
-        
-    
 
     <!-- Pages  -->
-    
-        <li>
-            <a href="/about" title="作品">
-                
-                    <i class="material-icons sidebar-material-icons">person</i>
-                
-                作品
-            </a>
-        </li>
-        
     
 
     <!-- Article Number  -->
@@ -544,7 +1297,15 @@
 
 
         <!-- Sidebar Footer -->
-        
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
 
 <!-- Sidebar Divider -->
 
@@ -553,9 +1314,9 @@
 
 <!-- Theme Material -->
 
-    <a href="###"  class="sidebar-footer-text-a" target="_blank">
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
         <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            DEMO
+            主题 - Material
             <span class="sidebar-badge badge-circle">i</span>
         </div>
     </a>
@@ -587,7 +1348,7 @@
 
                     
                         <!-- Footer Top Button -->
-                        <div class="toTop-wrap">
+                        <div id="back-to-top" class="toTop-wrap">
     <a href="#top" class="toTop">
         <i class="material-icons footer_top-i">expand_less</i>
     </a>
@@ -602,8 +1363,8 @@
         <div class="mdl-mini-footer--left-section sns-list">
     <!-- Twitter -->
     
-        <a href="https://twitter.com/x13133053566/" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
                 <span class="visuallyhidden">Twitter</span>
             </button><!--
      --></a>
@@ -611,8 +1372,8 @@
 
     <!-- Facebook -->
     
-        <a href="https://www.facebook.com/profile.php?id=100010904208117" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
                 <span class="visuallyhidden">Facebook</span>
             </button><!--
      --></a>
@@ -621,19 +1382,13 @@
     <!-- Google + -->
     
         <a href="https://www.google.com/" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
                 <span class="visuallyhidden">Google Plus</span>
             </button><!--
      --></a>
     
 
     <!-- Weibo -->
-    
-        <a href="http://weibo.com/2607422665/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
-                <span class="visuallyhidden">Weibo</span>
-            </button><!--
-     --></a>
     
 
     <!-- Instagram -->
@@ -643,12 +1398,6 @@
     
 
     <!-- Github -->
-    
-        <a href="https://github.com/justwe7" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
-                <span class="visuallyhidden">Github</span>
-            </button><!--
-     --></a>
     
 
     <!-- LinkedIn -->
@@ -662,17 +1411,19 @@
 
     <!-- Telegram -->
     
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
 </div>
 
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;
-            <script type="text/javascript">
-                var fd = new Date();
-                document.write(fd.getFullYear());
-            </script>
-            &nbsp;是像个二货啊喂
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;我学不动了
+            
         </div>
 
         <!-- Paradox Footer Right Section -->
@@ -695,12 +1446,20 @@
 </footer>
 
 
-                    <!-- Import File -->
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/js.min.js"></script>
-<script src="/js/nprogress.js"></script>
+                    <!-- Import JS File -->
 
-<script type="text/javascript">
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?LT4t6iE6m8TO1BLGGiNJqA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
     NProgress.configure({
         showSpinner: true
     });
@@ -723,7 +1482,6 @@
 
 
 
-    <script src="/js/smoothscroll.js"></script>
 
 
 
@@ -734,123 +1492,78 @@
 
 
 
-
-<!-- Swiftye -->
-
-
-<!-- Local Search-->
-
-    <script>
-    var searchFunc = function(path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: 'xml',
-            success: function( xmlResponse ) {
-                // get the contents from search data
-                var datas = $( 'entry', xmlResponse ).map(function() {
-                    return {
-                        title: $( 'title', this ).text(),
-                        content: $('content',this).text(),
-                        url: $( 'url' , this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function() {
-                    var str='<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = '';
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function(data) {
-                        var isMatch = true;
-                        var content_index = [];
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g,'').toLowerCase();
-                        var data_url = data.url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if(data_title !== '' && data_content !== '') {
-                            keywords.forEach(function(keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if( index_title < 0 && index_content < 0 ) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
-                            var content = data.content.trim().replace(/<[^>]+>/g, '');
-                            if (first_occur >= 0) {
-                                // cut out characters
-                                var start = first_occur - 6;
-                                var end = first_occur + 6;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 10;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function(keyword) {
-                                    var regS = new RegExp(keyword, 'gi');
-                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
-                                })
-                                str += '<p class="search-result">' + match_content + '...</p>' +'</a>';
-                            }
-                        }
-                    });
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    }
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
 </script>
 
-
-    <script>
-        var inputArea = document.querySelector('#search');
-        var getSearchFile = function() {
-            var path = 'search.xml';
-            searchFunc(path, 'search', 'local-search-result');
-        }
-
-        if(inputArea) {
-            inputArea.onfocus = function() {
-                getSearchFile();
-            }
-        }
-    </script>
+<!-- Import prettify js  -->
 
 
-<!-- Window Load-->
-<script>
-    $(window).load(function() {
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
         // Post_Toc parent position fixed
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
+
+    
+    
 </script>
 
 <!-- MathJax Load-->
 
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
 
                 </main>
             </div>
