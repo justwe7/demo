@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="main" style="height: 400px;">
+
+    </div>
+<script src="js/echarts-all.js"></script>
+<script type="text/javascript">
+
+        /*var mycharts = echarts.init(document.getElementById('main'));
+        mycharts.showLoading({
+            text : '数据载入中',
+            effect : 'whirling',
+            textStyle : {
+                fontSize : 20
+            }
+        });*/
+
+        var data = ["-",10,"-","-",40,"55",20,"-","-","-",30,"-"];
+        // var data = ["-", "128", "-", "134", "111", "100", "-"];
+        // var data = ["-", "-", "-", "-", "-", "-", "-", "-", "99", "-", "96", "96", "102", "98", "-", "-", "-", "-", "99", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
+        // var data = ["-", "-", "-", "-", "-", "-", "-", "-", "69", "-", "70", "64", "75", "76", "-", "-", "-", "-", "84", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
+        // var data = ["-",10,"20","30",40,"30",20];
+        // console.log(ProcessData(data))
+        function ProcessData(data) {
+            var _data = data.concat(),arrNull = [],arrVal = [],arrValIndex = [],n = 0,_n = 0;
+            window.ToolTipNullData = [];
+            for (var i = 0; i < _data.length; i++) {
+                if (_data[i] != "-") {
+                    arrVal.push(Number(_data[i]));
+                    arrValIndex.push(i);
+                }
+            }
+            // console.log(arrVal)
+            // console.info(arrValIndex)
+
+            for (var i = 0; i < _data.length; i++) {
+                if (_data[i] == "-" && i > arrValIndex[0] && i < arrValIndex[arrValIndex.length-1]) {
+                    //首次出现 和 之后的 - 不执行处理
+                    if (i > arrValIndex[n] && i < arrValIndex[n+1]) {//在数值index 范围内的处理 else  增加arrValIndex 的下标
+                        // console.log(n)
+                        // console.log(i)
+                        // console.warn(arrValIndex[n])
+                        // console.log(arrValIndex[n+1] - arrValIndex[n])
+                        // _data[i] = difineVal(n,_n);
+                        _n++;//需要改变 - 值的区间下标
+                        // console.log(difineVal(n,_n))
+                        // console.info(n)
+                        _data[i] = difineVal(n,_n);
+                    }else{//增加arrValIndex 的下标寻找值
+                        // if (true) {}
+                        while(i > arrValIndex[n] && i > arrValIndex[n+1]){//避免多个连续有效数值连续导致n值计算对应下标错误
+                            n++;
+                        }
+                        console.log(n)
+                        _n = 1;
+                        // console.log(difineVal(n,_n))
+                        _data[i] = difineVal(n,_n);
+                        // }
+                        // console.log(_n)
+                        // console.info(i)
+                        // console.warn(arrValIndex[n])
+                        // console.log(arrValIndex[n+1] - arrValIndex[n])
+                        // _data[i] = difineVal();
+                    }
+                }
+            }
+            function difineVal(n,_n) {
+                var fragment = (arrVal[n+1] - arrVal[n]) / (arrValIndex[n+1] - arrValIndex[n]) * _n;
+                return {value:(arrVal[n] + fragment),symbol: 'none'};
+            }
+            return _data;
+        }
+
+        /*console.log(arrVal)
+        console.log(arrValIndex)*/
+
+        /*for (var i = 0; i < arr.length; i++) {
+            if (i == 0 || i == (arr.length-1)) {
+                continue;
+            }else{
+                arr[i]
+            }
+        }*/
+        // var data = [32,55,{value:90,symbol: 'none'},33,77];
+
+        // function getFakeY(previousValidX, currentX, nextValidX){
+        //     // getPreviousValidY, getNextValidY这里仅为获取对应的Y值，请根据自己的实际情况代替。
+        //     var previousValidY = getPreviousValidY(previousValidX);
+        //     var nextValidY = getNextValidY(nextValidX);
+        //     var totalDeltaX = nextValidX - previousValidX;
+        //     var deltaX = currentX - previousValidX;
+
+        //     var totalDeltaY;
+        //     var deltaY = parseFloat((deltaX * totalDeltaY / totalDeltaX)).toFixed(2));
+        //     var fakeY;
+
+        //     if(previousValidY <= nextValidY){
+        //         totalDeltaY = nextValidY - previousValidY;
+        //         fakeY = Number(previousValidY) + Number(deltaY);
+        //     }else{
+        //         totalDeltaY = previousValidY - nextValidY;
+        //         fakeY = previousValidY - deltaY;
+        //     }
+
+        //     return (parseFloat(fakeY)).toFixed(2);
+        // }
+
+        var myChart = echarts.init(document.getElementById('main'));
+        // myChart.clear();
+        // 图表释放-------------------
+        // myChart.dispose();
+        var option = {
+            tooltip: {
+                show: true,
+                trigger: 'axis',
+                formatter: function (params) {
+                    if (data[params[0].dataIndex] == "-") {
+                        return "今日暂无数据";
+                    }else{
+                        var str = params[0].name;
+                        for (var key in params) {
+                            str += '<br>' + params[key].seriesName + params[key].data;
+                        }
+                        return str;
+                    }
+                }
+            },
+            legend: {
+                data:['销量']
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","手套","背心","裤衩","哇哈哈","脉动","营养快线"]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    /*min: 30,
+                    max: 50,*/
+                }
+            ],
+            series : [
+                {
+                    "name":"销量",
+                    "type":"line",
+                    // 'barWidth': 10,
+                    'borderColor' :'#23f',
+                    symbolSize: 10,
+                    // symbol: 'none',
+                    "itemStyle": {
+                        normal: {
+                            color: 'red',
+                            label : {
+                                show : true,
+                                formatter: function (params) {
+                                    return params.value + '\n(' + (Math.round(params.value / 300 * 10000) / 100.00 + "%)");
+                                },
+                                textStyle : {
+                                    fontSize : '26',
+                                    fontFamily : '微软雅黑',
+                                    fontWeight : 'bold'
+                                }
+                            }
+                        },
+                    },
+                    "data": ProcessData(data)
+                }
+            ]
+        };
+
+        /*myChart.showLoading({
+            text : 'sss',
+            effect : 'spin',
+            textStyle : {
+                fontSize : 20
+            }
+        });*/
+
+        // clearTimeout(loadingTicket);
+        /*setTimeout(function (){
+            myChart.hideLoading();
+            myChart.setOption(option);
+        },2200);*/
+
+        // 为echarts对象加载数据
+    myChart.setOption(option);
+
+    /*document.onclick = function () {
+        myChart.clear()
+    }*/
+</script>
+</body>
+</html>
