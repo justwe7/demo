@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Demo导航</title>
-</head>
-<body>
-  demo在线预览仓库
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Demo导航</title>
+    <!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script> -->
+    <!-- <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
+    <!-- <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://unpkg.com/browse/antd@3.21.2/dist/antd.min.css"
+    />
+    <script src="https://unpkg.com/browse/antd@3.21.2/dist/antd.min.js"></script> -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/browse/antd@3.21.2/dist/antd.min.css" />
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://unpkg.com/browse/antd@3.21.2/dist/antd.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <antd.Button type="primary">Primary</antd.Button>
+          <antd.Button>Default</antd.Button>
+          <antd.Button type="dashed">Dashed</antd.Button>
+          <antd.Button type="danger">Danger</antd.Button>
+        </div>,
+        document.getElementById("root")
+      );
+      // ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById("root"));
+    </script>
+  </body>
 </html>
