@@ -22,11 +22,6 @@ class Compile {
     return fragment;
   }
 
-  /* init() {
-    let childNodes =  this.$fragment.childNodes;
-    this.compile()
-  }
- */
   compile(el) {
     var childNodes = el.childNodes;
 
