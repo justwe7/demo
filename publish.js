@@ -3,15 +3,43 @@ var globby = require('globby');
 var fs = require("fs");
 var path = require("path");
 
-let fileList = globby.sync(['!{node_modules}/**', './**/*.html'])
-let arr = []
+let fileList = globby.sync(['!{node_modules}/**', './**/*.html', '!{home}/**'])
+let oPath = {}
+function foo(oPath, arr) {
+  if (arr.length == 2) {
+    oPath[arr[0]] = oPath[arr[0]] || []
+    oPath[arr[0]].push(arr[1])
+  } else {
+    arr.forEach(_key => {
+      if (!oPath[_key]) {
+        oPath[_key] = []
+      }
+      foo(oPath[_key], arr.slice(1))
+    })
+  }
+  
+}
 fileList.forEach(function(entry) {
-  console.log(entry);
-  arr.push(entry)
+  /* console.log(entry);
+  var arr = entry.split('/');
+  if (arr.length>1) {
+    var key = arr[0]
+    if (arr.length > 2) {
+      foo(oPath[key], arr)
+    } else {
+      oPath[key] = oPath[key] || []
+      oPath[key].push(arr[1])
+    }
+    
+  } */
+  
+  // arr.push(entry)
   // basename = path.basename(entry, path.extname(entry));
 });
+console.log(process.argv);
+
 let fd = fs.openSync(path.resolve(__dirname, "./entry.json"), "w");
-fs.writeSync(fd, JSON.stringify(arr), 0, "utf-8");
+fs.writeSync(fd, JSON.stringify(oPath), 0, "utf-8");
 fs.closeSync(fd);
 
 

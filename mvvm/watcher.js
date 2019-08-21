@@ -62,5 +62,5 @@ class Watcher {
         }
         return obj;
     }
-}
+  }
 }

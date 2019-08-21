@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script id="code">
+      function A(baz, baz2) {
+        this.foo = "foo";
+        this.obj = {
+          a: 1
+        };
+        this.baz = baz || "def";
+        this.baz2 = baz2 || "def";
+      }
+      A.prototype.bar = "bar";
+      A.prototype.obj2 = {
+        b: 2
+      };
+
+      function B(baz, baz2) {
+        this.foo = "foo";
+        this.obj = {
+          a: 1
+        };
+        this.baz = baz || "def";
+        this.baz2 = baz2 || "def";
+        return { haha: "我就是这么🐂" };
+      }
+      B.prototype.bar = "bar";
+      B.prototype.obj2 = {
+        b: 2
+      };
+
+      /* 
+        new 是什么，
+        1. 创建一个空对象，使空对象的原型链指向构造函数的原型。bar obj2
+        2. 然后执行构造函数内的方法，内部的属性如foo obj让this指向新的空对象
+        3. 将运行结果返回回去（判断一下）
+      */
+      function newNew(Con, ...arg) {
+        // var _o = {}; //1
+        var _o = Object.create(null); //1 创建一个没有原型的对象
+        _o.__proto__ = Con.prototype; //1
+        var res = Con.apply(_o, arg); //2
+        return typeof res === "object" ? res : _o; //3 因为 构造函数可能直接有return引用类型的数据 [] {} 所以要判断一下返回值
+      }
+      console.log(newNew(A, 1, 2));
+      console.log(newNew(B, 1, 2));
+    </script>
+  </body>
+</html>

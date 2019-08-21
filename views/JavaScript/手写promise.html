@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    new Promise((resolve, reject) => {
+      resolve(123)
+    }).then(res => {
+      console.log('success'+res);
+    }, err => {
+      console.log('fail'+err);
+    })
+    /* 
+      promise 内部保存一个状态 默认为等待状态
+      执行promise的函数体，需要更改状态执行 resolve 更改promise内的状态
+      then方法执行回调，两个参数，成功和失败cb，promise内部判断状态不同的回调参数
+    */
+
+    class P {
+      constructor(runFn) {
+        this.status = "pending";//声明默认状态
+        this.value//声明一个闭包变量 
+        let resolve = res => {//执行函数体更改状态的实参  --- 更改内部的状态  接收执行更改状态传入的实参
+          if (this.status === 'pending') {//状态只能更改一次  默认状态才能更改
+            this.status = 'fulfilled'
+            this.value = res
+          }
+        }
+        let reject = rej => {
+          if (this.status === 'pending') {
+            this.status = 'rejected'
+            this.value = rej
+          }
+        }
+        runFn(resolve, reject)//执行函数体  传入两个更改状态的参数
+      }
+      then(resolveFn, rejectFn) {//promise().then(fn1, fn2)接收的两个回调 
+        switch (this.status) {//判断状态执行不同回调
+          case "fulfilled":
+            resolveFn(this.value)// 将执行函数体 更改状态值时的形参作为实参传入回调
+            break;
+          case "rejected":
+            rejectFn(this.value)
+            break;
+        
+          default:
+            break;
+        }
+      }
+    }
+
+    new P((resolve, reject) => {
+      resolve(1234)
+      // setTimeout(() => { //这样实现有个问题  先执行then方法是无法执行内部更改状态的方法的
+      //   resolve(1234)
+      // }, 1000);
+    }).then(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
+  </script>
+</body>
+</html>
