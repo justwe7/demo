@@ -1,105 +1,48 @@
-/* 多入口 */
+/* 获取文件入口 */
 var globby = require('globby');
 var fs = require("fs");
 var path = require("path");
 
 let fileList = globby.sync(['!{node_modules}/**', './**/*.html', '!{home}/**'])
-let oPath = {}
-function foo(oPath, arr) {
-  if (arr.length == 2) {
-    oPath[arr[0]] = oPath[arr[0]] || []
-    oPath[arr[0]].push(arr[1])
-  } else {
-    arr.forEach(_key => {
-      if (!oPath[_key]) {
-        oPath[_key] = []
+
+var oPathInfo = {}
+fileList.forEach(function(path) {
+  var arr = path.split('/');
+  if (arr.length > 1) {
+    // var keys = []
+    var keys = arr.slice(0);
+    var lastItem = keys.pop()
+
+    var target = {},filderName
+    keys.forEach((filder, index) => {
+      if (index == 0) {
+        filderName = filder
+        target = oPathInfo[filder] || {}
+        // console.log(filder, target);
+        if (keys.length == 1) {
+          target[lastItem] = path
+        }
+      } else {
+          // console.log(target[filder]);
+        if (!target[filder]) {
+          target[filder] = {}
+        }
+        if (index === keys.length-1) {
+          target[filder][lastItem] = path
+        }
+    // console.log(target);
+        // target = target[filder]
       }
-      foo(oPath[_key], arr.slice(1))
     })
-  }
-  
-}
-fileList.forEach(function(entry) {
-  /* console.log(entry);
-  var arr = entry.split('/');
-  if (arr.length>1) {
-    var key = arr[0]
-    if (arr.length > 2) {
-      foo(oPath[key], arr)
-    } else {
-      oPath[key] = oPath[key] || []
-      oPath[key].push(arr[1])
-    }
+    // target[lastItem] = path
+    oPathInfo[filderName] = target
     
-  } */
-  
-  // arr.push(entry)
-  // basename = path.basename(entry, path.extname(entry));
+  } else {//如果长度是1 就是单文件路径
+    oPathInfo[path] = path
+  }
+
 });
-console.log(process.argv);
 
 let fd = fs.openSync(path.resolve(__dirname, "./entry.json"), "w");
-fs.writeSync(fd, JSON.stringify(oPath), 0, "utf-8");
+fs.writeSync(fd, JSON.stringify(oPathInfo), 0, "utf-8");
 fs.closeSync(fd);
-
-
-// const pages = ['']
-
-exports.pages = function () {
-  var templates = getEntry("./src/htmls/html/*.html");
-  let pages = [];
-  let json = {};
-
-  for (var pathname in templates) {
-    // console.log(pathname);
-    
-    // 配置生成的html文件，定义路径等
-    var conf = {
-      multihtmlCatch: true, // 开启多入口缓存
-      filename: pathname.split("/")[pathname.split("/").length-1] + ".html",
-      template: templates[pathname], // 模板路径
-      chunks: [pathname, "vendor", "manifest"], // 每个html引用的js模块
-      inject: true // js插入位置
-    };
-      if (pathname.includes("rate") || pathname.split("/")[1] == 'income') {//rate页面不插入js只复制模板
-      conf.chunks = []
-    }
-    pages.push(new HtmlWebpackPlugin(conf));
-    json[pathname] = pathname.split("/").pop() + ".html";
-  // writePage(pathname)
-    // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
-  }
-
-  let fd = fs.openSync(path.resolve(__dirname, "../src/entry.json"), "w");
-  fs.writeSync(fd, JSON.stringify(json), 0, "utf-8");
-  fs.closeSync(fd);
-  return pages;
-};
-
-function writePage(entries) {
-  let json = {};
-  
-  json[entries] = entries.split("/").pop() + ".html";
-  console.log(json);
-
-  //同步写入文件
-  let fd = fs.openSync(path.resolve(__dirname, "../src/entry.json"), "w");
-  fs.writeSync(fd, JSON.stringify(json), 0, "utf-8");
-  fs.closeSync(fd);
-}
-
-
-function getEntry(globPath) {
-  var entries = {},
-    basename,
-    tmp,
-    pathname;
-
-  glob.sync(globPath).forEach(function(entry) {
-    basename = path.basename(entry, path.extname(entry));
-    tmp = entry.split("/").splice(-3);
-    pathname = tmp.splice(0, 1) + "/" + basename; // 正确输出js和html的路径
-    entries[pathname] = entry;
-  });
-  return entries;
-}
