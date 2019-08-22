@@ -163,6 +163,7 @@ class App extends Component {
                     <Tooltip placement="topLeft" title="页面打不开不是报错！！！">
                       <h2>justwe7のDEMO小仓库</h2>
                     </Tooltip>
+                    <a href="https://github.com/justwe7/justwe7.github.io" style={{padding: '10px 0 10px', display: 'block'}} target="_blank" rel="noopener noreferrer">github地址</a>
                     <Alert
                       message="点击左边导航查看demo"
                       description="空白的页面查看控制台有打印log,iframe页面=>可以在新窗口打开调试"
