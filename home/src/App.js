@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon, Spin, Alert } from "antd";
+import { Layout, Menu, Icon, Spin, Alert, Tooltip } from "antd";
 import http from "./api";
 import "./App.css";
 
@@ -175,11 +175,12 @@ class App extends Component {
                   </Spin>
                 ) : (
                   <div style={{marginTop: '20px'}}>
-                    <h2>小DEMO仓库</h2>
+                    <Tooltip placement="topLeft" title="页面打不开不是报错！！！">
+                      <h2>justwe7のDEMO小仓库</h2>
+                    </Tooltip>
                     <Alert
-                      
                       message="点击左边导航查看demo"
-                      description="空白的页面查看控制台可能有输出"
+                      description="空白的页面查看控制台有打印log"
                       type="success"
                     />
                   </div>
