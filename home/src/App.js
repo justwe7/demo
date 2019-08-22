@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon, Spin, Alert, Tooltip } from "antd";
+import { Layout, Menu, Icon, Spin, Alert, Tooltip, Row, Col } from "antd";
 import http from "./api";
 import "./App.css";
 
@@ -155,7 +155,6 @@ class App extends Component {
                       height="100%"
                       style={{ minHeight: "100vh", height: this.state.iframeH }}
                       onLoad={this.iframeLoad}
-                      onErr
                     />
                   </Spin>
                 ) : (
@@ -163,10 +162,13 @@ class App extends Component {
                     <Tooltip placement="topLeft" title="页面打不开不是报错！！！">
                       <h2>justwe7のDEMO小仓库</h2>
                     </Tooltip>
-                    <a href="https://github.com/justwe7/justwe7.github.io" style={{padding: '10px 0 10px', display: 'block'}} target="_blank" rel="noopener noreferrer">github地址</a>
+                    <Row style={{padding: '10px 0 10px'}}>
+                      <Col span={3}><a href="https://github.com/justwe7/justwe7.github.io" target="_blank" rel="noopener noreferrer">github仓库</a></Col>
+                      <Col span={3}><a href="http://17qu.top" target="_blank" rel="noopener noreferrer">blog地址</a></Col>
+                    </Row>
                     <Alert
-                      message="点击左边导航查看demo"
-                      description="空白的页面查看控制台有打印log,iframe页面=>可以在新窗口打开调试"
+                      message="点击左边导航查看demo，！！！空白的页面查看控制台有打印log"
+                      description="展示都是iframe页面=>可以在新窗口打开调试"
                       type="success"
                     />
                   </div>
