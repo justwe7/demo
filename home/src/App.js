@@ -10,22 +10,7 @@ class MyTree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      treeData: {
-        "index.html": "index.html",
-        mvvm: { "index.html": "mvvm/index.html" },
-        views: {
-          JavaScript: {
-            "实现一个new.html": "views/JavaScript/实现一个new.html",
-            "对象的继承.html": "views/JavaScript/对象的继承.html",
-            "手写promise copy 2.html":
-              "views/JavaScript/手写promise copy 2.html",
-            "手写promise copy 3.html":
-              "views/JavaScript/手写promise copy 3.html",
-            "手写promise copy.html": "views/JavaScript/手写promise copy.html",
-            "手写promise.html": "views/JavaScript/手写promise.html"
-          }
-        }
-      }
+      treeData: {}
     };
   }
 
@@ -180,7 +165,7 @@ class App extends Component {
                     </Tooltip>
                     <Alert
                       message="点击左边导航查看demo"
-                      description="空白的页面查看控制台有打印log"
+                      description="空白的页面查看控制台有打印log,iframe页面=>可以在新窗口打开调试"
                       type="success"
                     />
                   </div>
