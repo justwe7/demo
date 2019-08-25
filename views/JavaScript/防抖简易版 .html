@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="text"></p>
+    <div id="btn" style="width: 300px;height: 300px;border: 1px solid #000">移出或停止移动才触发</div>
+    <script>
+      var n = 0,
+        oP = document.querySelector("#text");
+      foo();
+      document.getElementById('btn').addEventListener("mousemove", debounce(foo, 500));
+
+      function foo(param) {
+        oP.innerText = ++n;
+      }
+
+      function debounce(fn, delay) {
+        var timer = null;
+        return function() {
+          let context = this;
+          let arg = arguments;
+          clearTimeout(timer);
+          timer = setTimeout(function() {
+            fn.apply(context, arg);
+          }, delay);
+        };
+      }
+    </script>
+  </body>
+</html>

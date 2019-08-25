@@ -192,26 +192,20 @@
       //先执行then方法是将回调添加到promise的队列任务中  之后执行更改状态的方法会遍历队列执行任务
       new P((resolve, reject) => {
         setTimeout(() => {
-          resolve(1234);
+          reject(1234);
         }, 1000);
       })
         .then(
           res => {
             console.log(res);
-            return 2222;
+            // return 2222;
             // return new P();
-          },
-          err => {
-            console.log(err);
           }
         )
         .then(
           res => {
             console.log("2t:" + res);
-            throw error("ssss");
-          },
-          err => {
-            console.log("2t:" + err);
+            // throw error("ssss");
           }
         )
         .catch(err => {

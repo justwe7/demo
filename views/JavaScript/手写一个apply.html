@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var o = {
+        a: 123
+      };
+      var a = 1;
+      Function.prototype.mapply = function(context = window, arg) {
+        // var fn = this;
+        context.fn = this;
+        const result = context.fn(...arg);
+        delete context.fn;
+        return result;
+      };
+      function foo (b = 2, c=3) {
+        console.log(this.a);
+        console.log(b, c);
+      }
+      foo()
+      foo.mapply(o, [1,2])
+    </script>
+  </body>
+</html>

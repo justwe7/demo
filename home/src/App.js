@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Layout, Menu, Icon, Spin, Alert, Tooltip, Row, Col } from "antd";
 import http from "./api";
 import "./App.css";
+const doamin
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -103,7 +104,17 @@ class App extends Component {
       loading: false,
       // viewUrl: "https://justwe7.github.io/弹性盒模型/align-self.html",
       iframeH: "95vh",
-      viewUrl: ""
+      viewUrl: "",
+      lock: false
+    };
+    this.lock = false
+
+    window.onpopstate = function(event) {
+      console.log(event);
+      
+      console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+      // window.history.replaceState({}, null, '/')
+
     };
   }
 
@@ -115,10 +126,17 @@ class App extends Component {
   };
 
   iframeLoad = (e, v, a) => {
+    if (this.lock) {
+      window.history.replaceState({}, null, this.state.viewUrl.replace('https://justwe7.github.io', ''))
+    } else {
+      window.history.pushState({}, null, this.state.viewUrl.replace('https://justwe7.github.io', ''))
+    }
+
     this.setState({
       loading: false,
       iframeH: `${e.target.clientHeight}px`
     });
+    this.lock = true
   };
 
   render() {

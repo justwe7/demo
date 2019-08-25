@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var o = {
+        a: 123
+      };
+      var a = 1;
+      Function.prototype.mbind = function(context = window, ...arg1) {
+        context.fn = this;
+        return function(...arg2) {
+          const result = context.fn(...arg1, ...arg2);
+          delete context.fn;
+          return result;
+        };
+      };
+      function foo(b = 2, c = 3) {
+        console.log(this.a);
+        console.log(b, c);
+      }
+      foo();
+      foo.mbind(o, 1)(7);
+    </script>
+  </body>
+</html>

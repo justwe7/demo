@@ -55,77 +55,69 @@
         }
         then(resolveFn, rejectFn) {
           //promise().then(fn1, fn2)接收的两个回调
-          let _promise;
+          let _promise, self = this;
           // 根据标准，如果then的参数不是function，则我们需要忽略它，此处以如下方式处理  如这种情况:  then(null, err => {})
           resolveFn =
             typeof resolveFn === "function" ? resolveFn : function(v) {};
           rejectFn = typeof rejectFn === "function" ? rejectFn : function(r) {};
 
-          switch (
-            this.status //判断状态执行不同回调
-          ) {
-            case "fulfilled":
-              //支持链式调用 所以需要返回一个promise
-              return (_promise = new P((resolve, reject) => {
-                try {
-                  var x = resolveFn(this.value); // 将执行函数体 更改状态值时的形参作为实参传入回调
-                  if (x instanceof P) {
-                    // 如果resolveFn的返回值是一个Promise对象，直接取它的结果做为promise2的结果 即： 函数体内代码 return new P...
-                    console.log(9999);
+          if (self.status == "fulfilled") {
+            //支持链式调用 所以需要返回一个promise
+            return (_promise = new P((resolve, reject) => {
+              try {
+                var x = resolveFn(self.value); // 将执行函数体 更改状态值时的形参作为实参传入回调
+                if (x instanceof P) {
+                  // 如果resolveFn的返回值是一个Promise对象，直接取它的结果做为promise2的结果 即： 函数体内代码 return new P...
+                  console.log(9999);
 
-                    x.then(resolve, reject);
-                  }
-                  resolve(x); // 否则，以它的返回值做为promise2的结果
-                } catch (e) {
-                  reject(e); // 如果出错，以捕获到的错误做为promise2的结果
+                  x.then(resolve, reject);
                 }
-              }));
-
-              break;
-            case "rejected":
-              return (_promise = new P((resolve, reject) => {
-                try {
-                  var x = rejectFn(this.value); // 将执行函数体 更改状态值时的形参作为实参传入回调
-                  if (x instanceof P) {
-                    // 如果resolveFn的返回值是一个Promise对象，直接取它的结果做为promise2的结果 即： 函数体内代码 return new P...
-                    x.then(resolve, reject);
-                  }
-                } catch (e) {
-                  reject(e); // 如果出错，以捕获到的错误做为promise2的结果
+                resolve(x); // 否则，以它的返回值做为promise2的结果
+              } catch (e) {
+                reject(e); // 如果出错，以捕获到的错误做为promise2的结果
+              }
+            }));
+          } else if(self.status === "rejected") {
+            return (_promise = new P((resolve, reject) => {
+              try {
+                var x = rejectFn(self.value); // 将执行函数体 更改状态值时的形参作为实参传入回调
+                if (x instanceof P) {
+                  // 如果resolveFn的返回值是一个Promise对象，直接取它的结果做为promise2的结果 即： 函数体内代码 return new P...
+                  x.then(resolve, reject);
                 }
-              }));
-              break;
-
-            default:
-              // 如果当前的Promise还处于pending状态，我们并不能确定调用onResolved还是onRejected，
+                
+              } catch (e) {
+                reject(e); // 如果出错，以捕获到的错误做为promise2的结果
+              }
+            }));
+          } else {
+            // 如果当前的Promise还处于pending状态，我们并不能确定调用onResolved还是onRejected，
               // 只能等到Promise的状态确定后，才能确实如何处理。
-              // 所以我们需要把我们的**两种情况**的处理逻辑做为callback放入promise1(此处即this/self)的回调数组里
+              // 所以我们需要把我们的**两种情况**的处理逻辑做为callback放入promise1(此处即self/self)的回调数组里
               // 逻辑本身跟第一个if块内的几乎一致，此处不做过多解释
-              return (_promise = new P((resolve, reject) => {
-                this.onResolvedCallbacks.push(() => {
-                  try {
-                    var x = resolveFn(this.value);
-                    if (x instanceof P) {
-                      x.then(resolve, reject);
-                    }
-                    resolve(x);
-                  } catch (e) {
-                    reject(e);
+            return (_promise = new P((resolve, reject) => {
+              self.onResolvedCallbacks.push(() => {
+                try {
+                  var x = resolveFn(self.value);
+                  if (x instanceof P) {
+                    x.then(resolve, reject);
                   }
-                });
-                this.onRejectedCallbacks.push(() => {
-                  try {
-                    var x = rejectFn(this.value);
-                    if (x instanceof P) {
-                      x.then(resolve, reject);
-                    }
-                  } catch (e) {
-                    reject(e);
+                  resolve(x);
+                } catch (e) {
+                  reject(e);
+                }
+              });
+              self.onRejectedCallbacks.push(() => {
+                try {
+                  var x = rejectFn(self.value);
+                  if (x instanceof P) {
+                    x.then(resolve, reject);
                   }
-                });
-              }));
-
-              break;
+                } catch (e) {
+                  reject(e);
+                }
+              });
+            }));
           }
         }
 
@@ -137,27 +129,18 @@
 
       //先执行then方法是将回调添加到promise的队列任务中  之后执行更改状态的方法会遍历队列执行任务
       new P((resolve, reject) => {
-        setTimeout(() => {
-          resolve(1234);
-        }, 1000);
+        // setTimeout(() => {
+          reject(1234);
+        // }, 1000);
       })
         .then(
           res => {
             console.log(res);
-            return 2222;
-            // return new P();
-          },
-          err => {
-            console.log(err);
           }
         )
         .then(
           res => {
             console.log("2t:" + res);
-            throw error("ssss");
-          },
-          err => {
-            console.log("2t:" + err);
           }
         )
         .catch(err => {

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p id="text"></p>
+  <button id="btn">点我节流</button>
+  <script>
+    var n = 0,oP = document.querySelector("#text");
+    foo()
+    document.querySelector("#btn").addEventListener('click', throttle(foo, 500))
+
+    function foo(param) {
+      oP.innerText = ++n
+      console.log(this);
+      
+    }
+
+    function throttle (fn, delay) {
+      let last = Date.now()
+      return function () {
+        let context = this
+        let arg = arguments
+        let now = Date.now()
+        if (now - last >= delay) {
+          fn.apply(context, arg)
+          last = Date.now()
+        }
+      }
+    }
+  </script>
+</body>
+</html>
