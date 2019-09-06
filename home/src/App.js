@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Layout, Menu, Icon, Spin, Alert, Tooltip, Row, Col } from "antd";
 import http from "./api";
 import "./App.css";
-const doamin
+const doamin = "https://justwe7.github.io"
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -114,22 +114,21 @@ class App extends Component {
       
       console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
       // window.history.replaceState({}, null, '/')
-
     };
   }
 
   __linkChange = link => {
     this.setState({
       loading: true,
-      viewUrl: `https://justwe7.github.io/${link}`
+      viewUrl: `${doamin}/${link}`
     });
   };
 
   iframeLoad = (e, v, a) => {
     if (this.lock) {
-      window.history.replaceState({}, null, this.state.viewUrl.replace('https://justwe7.github.io', ''))
+      window.history.replaceState({}, null, this.state.viewUrl.replace(doamin, ''))
     } else {
-      window.history.pushState({}, null, this.state.viewUrl.replace('https://justwe7.github.io', ''))
+      window.history.pushState({}, null, this.state.viewUrl.replace(doamin, ''))
     }
 
     this.setState({

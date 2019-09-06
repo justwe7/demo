@@ -8,7 +8,58 @@
 </head>
 <body>
   <script>
+    function A() {
+      this.aa = 'aa'
+      this.obj1 = {
+        a: 1
+      }
+    }
+    A.prototype.foo = function () {
+      console.log(this);
+    }
+    A.prototype.obj2 = {
+      a2: 234
+    }
+
+    function B(param) {
+      this.bb = 'bb'
+    }
+    B.prototype = Object.create(A.prototype);
+    console.log(new B());
+
+    function C(param) {
+      this.cc = 'cc'
+    }
+    C.prototype.cfoo = function () {
+      console.log(124);
+    }
+    C.prototype = new A() 
+    Object.defineProperty(C.prototype, 'constructor', {
+      enumerable: false,
+    　value: C,
+    　writable: true
+    })
+    var c = new C()
+    console.log(c.constructor === C);
     
+
+    function SuperType(){
+      this.colors = ["red", "blue", "green"];
+    }
+
+    function SubType(){            
+    }
+
+    //继承了SuperType
+    SubType.prototype = new SuperType();
+
+    var instance1 = new SubType();
+    console.log(instance1.colors);        //"red,blue,green
+    instance1.colors.push("black");
+    console.log(instance1.colors);        //"red,blue,green,black"
+
+    var instance2 = new SubType();
+    console.log(instance2.colors);        //"red,blue,green,black"
   </script>
 </body>
 </html>
