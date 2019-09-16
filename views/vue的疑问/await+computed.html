@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>变量{{ val }}, 计算 {{abc}}</div>
+      <button @click="foo">按钮</button>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          val: 1
+        },
+        computed: {
+          abc() {
+            this.showStep(this.val + '计算属性执行')
+            return this.val + '计算属性执行'
+          }
+        },
+        methods: {
+          showStep(txt) {
+            try {
+              $('#app').append(`<div>${txt}</div>`)
+            } catch (error) {}
+          },
+          async foo() {
+            this.showStep(this.val + 'foo开始执行')
+            await this.asyncFn();
+            this.showStep(this.val + 'foo结束')
+          },
+          asyncFn() {
+            return new Promise((resolve, reject) => {
+              setTimeout(e => {
+                this.val++;
+                this.showStep(this.val + 'await异步方法')
+                resolve()
+              }, 1000)
+            })
+          },
+
+        }
+      })
+    </script>
+  </body>
+</html>
