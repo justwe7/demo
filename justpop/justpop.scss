@@ -1,0 +1,349 @@
+@charset "utf-8";
+/*
+ * @Author: huaxi.li 
+ * @Last Modified by:   huaxi.li 
+ */
+
+.mask {
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        text-align: center;
+        font-size: 15px;
+    }
+    .toast {
+        opacity: 0;
+        transition: 0.3s;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        line-height: 1.2;
+        min-width: 100px;
+        max-width: 70vw;
+        word-wrap: break-word;
+        word-break: break-all;
+        padding: 7px 15px;
+        border-radius: 5px;
+        color: #fff;
+    }
+    .confirm {
+        word-wrap: break-word;
+        word-break: break-all;
+        &.confirm {
+            width: 80%;
+            max-width: 300px;
+            background-color: #FFFFFF;
+            text-align: center;
+            border-radius: 3px;
+            overflow: hidden;
+            .modal_title {
+                padding: 1.3em 1.6em 0.5em;
+                font-size: 18px;
+            }
+            .modal_content {
+                padding: 0 1.6em 0.8em;
+                min-height: 40px;
+                font-size: 15px;
+                line-height: 1.3;
+                word-wrap: break-word;
+                word-break: break-all;
+                color: #808080;
+            }
+            .modal_footer {
+                position: relative;
+                line-height: 48px;
+                font-size: 18px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: flex;
+                a {
+                    display: block;
+                    -webkit-box-flex: 1;
+                    -webkit-flex: 1;
+                    flex: 1;
+                    color: #808080;
+                    text-decoration: none;
+                    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                    position: relative;
+                    &:active {
+                        background-color: #EEEEEE;
+                    }
+                    &:last-child {
+                        color: #09BB07;
+                        &::after {
+                            content: " ";
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 1px;
+                            bottom: 0;
+                            border-left: 1px solid #D5D5D6;
+                            color: #D5D5D6;
+                            -webkit-transform-origin: 0 0;
+                            transform-origin: 0 0;
+                            -webkit-transform: scaleX(0.5);
+                            transform: scaleX(0.5);
+                        }
+                    }
+                }
+                &:after {
+                    content: " ";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    height: 1px;
+                    border-top: 1px solid #D5D5D6;
+                    color: #D5D5D6;
+                    -webkit-transform-origin: 0 0;
+                    transform-origin: 0 0;
+                    -webkit-transform: scaleY(0.5);
+                    transform: scaleY(0.5);
+                }
+            }
+        }
+    }
+}
+
+@function rem($value) {
+    //使用函数变量单位
+    @return $value/50+rem;
+}
+
+@mixin font($value) {
+    //定义字体
+    font-size: ($value/32);
+}
+
+@mixin width($value) {
+    //定义宽度
+    width: ($value/32);
+}
+
+@mixin height($value) {
+    //定义高度
+    height: ($value/32);
+}
+
+@mixin line-height($value) {
+    //定义行高
+    line-height: ($value/32);
+}
+
+@mixin padding($t:0, $r:0, $b:0, $l:0) {
+    //定义padding
+    padding: ($t/32) ($r/32) ($b/32) ($l/32);
+}
+
+@mixin margin($t:0, $r:0, $b:0, $l:0) {
+    //定义margin
+    margin: ($t/32) ($r/32) ($b/32) ($l/32);
+}
+
+$color333: #333;
+$color666: #666;
+$color999: #999;
+$coloraaa: #aaa;
+$colorbbb: #bbb;
+$colorccc: #ccc;
+$main_theme: #fed853;
+$btn_fc: #705408;
+$def_bg: #ebebed;
+@mixin bg-image($url) {
+    //设置图标
+    background-image: url($url + "@2x.png");
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+        background-image: url($url + "@3x.png");
+    }
+}
+
+@mixin border-1px-b($color, $width:100%, $left:0, $bottom:0) {
+    //设置下边框 (颜色,[宽度,左边距,下边框(100%上边框)])
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: $left;
+        bottom: $bottom;
+        width: $width;
+        height: 1px;
+        background-color: $color;
+    }
+}
+
+@mixin border-1px-l($color, $height:100%, $top:0, $left:0) {
+    //设置左边框 (颜色,[宽度,上边距,左边框(100%右边框)])
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: $left;
+        top: $top;
+        width: 1px;
+        height: $height;
+        background-color: $color;
+    }
+}
+
+@mixin text-overflow($line) {
+    //多行缩略文本
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line;
+}
+
+%clearfix {
+    //清除浮动
+    &:after {
+        display: block;
+        content: "";
+        height: 0;
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+    }
+}
+
+%wordbreak {
+    //文本自动换行
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+@mixin defaultlabel() {
+    //设置如表单元素可编辑样式
+    appearance: normal;
+}
+
+%textoverflow {
+    //单行文本缩略
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+%textspace {
+    //文本两端对齐
+    word-spacing: -1em;
+    text-align: justify;
+    text-justify: distribute-all-lines;
+    text-align-last: justify;
+    -moz-text-align-last: justify;
+    -webkit-text-align-last: justify;
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        height: 0;
+    }
+}
+
+%centerblock {
+    //设置垂直居中
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+%centercontent {
+    //设置内容居中
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5) {
+    .border-1px-l {
+        &::before {
+            -webkit-transform: scaleX(0.7);
+            transform: scaleX(0.7);
+        }
+    }
+    .border-1px-b {
+        &::before {
+            -webkit-transform: scaleY(0.7);
+            transform: scaleY(0.7);
+        }
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-device-pixel-ratio: 2) {
+    .border-1px-l {
+        &::before {
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+        }
+    }
+    .border-1px-b {
+        &::before {
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+    }
+}
+
+.just_loading {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    padding: 30px;
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 7px;
+}
+
+.just_loading_line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -2px;
+    margin-left: -30px;
+    width: 60px;
+    height: 4px;
+    background: #FFF;
+    animation: spin 1.5s infinite ease;
+    &:nth-of-type(2) {
+        animation-delay: 0.1s;
+    }
+    &:nth-of-type(3) {
+        animation-delay: 0.2s;
+    }
+    &:nth-of-type(4) {
+        animation-delay: 0.3s;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

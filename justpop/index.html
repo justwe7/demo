@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹窗</title>
+    <!-- <link rel="stylesheet" href="./justpop.css"> -->
+</head>
+<body>
+    <button onclick="Just.toast({'text': 'xxdasda', 'time': 1000})">toast</button>
+    <button onclick="Just.confirm({
+        title: 'title',
+        text: 'config.text',
+        isCancel: true,
+        sureText: '确定',
+        cancelText: '退出',
+        fnCancel: function () {alert('点取消');},
+        fnSure: function () {alert('点确定');}
+    })">confirm1</button>
+    <button onclick="Just.confirm('xxxxx')">confirm2</button>
+    <button onclick="Just.loading.show();setTimeout(function () {Just.loading.hide();}, 3000);">loading</button>
+
+    <!-- <aside style="-webkit-transition:opacity 0.3s;transition:opacity 0.3s;position:fixed;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.3)">
+        <div style="display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;text-align:center;font-size:15px;">
+            <div class="just_loading">
+                <div class="just_loading_line"></div>
+                <div class="just_loading_line"></div>
+                <div class="just_loading_line"></div>
+                <div class="just_loading_line"></div>
+            </div>
+        </div>
+    </aside> -->
+    <script src="./justpop.js"></script>
+    <script>
+        // console.log(new Just());
+    </script>
+</body>
+</html>
