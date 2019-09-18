@@ -33,15 +33,13 @@ const server = (route, handle) => {
     }
 
     console.log("Request for " + pathname + " received.");
-    // route(handle, pathname, res, req);
-    res.write('正正');
-    res.end();
-
+    route(handle, pathname, res, req);
     /* res.writeHead(200, {"Content-Type": "text/plain"})
     res.write(content)
     res.end() */
   }
   http.createServer(onReq).listen(7878)
+  console.log('http://localhost:7878/ 运行');
 } 
 
 exports.start = server;
