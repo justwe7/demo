@@ -181,7 +181,7 @@ class App extends Component {
                     </Tooltip>
                     <Row style={{padding: '10px 0 10px'}}>
                       <Col span={3}><a href="https://github.com/justwe7/justwe7.github.io" target="_blank" rel="noopener noreferrer">github仓库</a></Col>
-                      <Col span={3}><a href="http://17qu.top" target="_blank" rel="noopener noreferrer">blog地址</a></Col>
+                      <Col span={3}><a href="http://lihx.top" target="_blank" rel="noopener noreferrer">blog地址</a></Col>
                     </Row>
                     <Alert
                       message="点击左边导航查看demo，！！！空白的页面查看控制台有打印log"
