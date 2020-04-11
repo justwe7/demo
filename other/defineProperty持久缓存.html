@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var o = {}
+    const valueReal = (() => {
+      const o = {}
+      return (obj, value, type = 'get') => {
+        if (type === 'get') {
+          return o[obj] || sessionStorage.getItem(obj)
+        } else {
+          o[obj] = value
+          sessionStorage.setItem(obj, value)
+        }
+      }
+    })()
+
+    const proxyKeys = {
+      config: {}, // 'noLogin' 未登录， 'logining' 登陆中， 'fail'登陆失败(用户拒绝)， 'done' 登陆成功
+      loginInfo: {}
+    }
+    Object.keys(proxyKeys).forEach((key) => {
+      Object.defineProperty(o, key, {
+        enumerable: true,
+        configurable: false,
+        get () {
+          console.log('getter: %s', key)
+          return valueReal(key)
+        },
+        set (val) {
+          console.log('setter: %s - %s', key, val)
+          valueReal(key, val, 'set')
+        }
+      })
+    })
+    console.log(o)
+  </script>
+</body>
+</html>

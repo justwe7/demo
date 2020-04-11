@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var arr = [
+    {
+      dataType: 0,
+      areaName: '全国',
+      areaId: 0, 
+      parentId: null
+    },
+    {
+      dataType: 1,
+      areaId: 15, 
+      areaName: '陕西',
+      parentId: null
+    },
+    {
+      dataType: 2,
+      areaId: 1404, 
+      areaName: '长治',
+      len: 1,
+      parentId: 14
+    },
+    {
+      dataType: 1,
+      areaId: 14, 
+      areaName: '山西',
+      len: 4,
+      parentId: null
+    },
+    {
+      dataType: 2,
+      areaId: 15003, 
+      areaName: '汉中',
+      len: 4,
+      parentId: 15
+    },
+    {
+      dataType: 2,
+      areaId: 15003, 
+      areaName: '线',
+      len: 2,
+      parentId: 15
+    },
+    {
+      dataType: 2,
+      areaId: 14221, 
+      areaName: '太原',
+      len: 2,
+      parentId: 14
+    }
+  ]
+  const F_CODE = 0
+  const PROVINCE_CODE = 1
+  const CITY_CODE = 2
+
+  var quanguo = arr.filter(item => item.dataType === F_CODE)
+  var sheng = arr.filter(item => item.dataType === PROVINCE_CODE)
+  var shi = arr.filter(item => item.dataType === CITY_CODE)
+
+  function sortArr(arr) {
+    return arr.sort((a, b) => a - b)
+  }
+  shi.forEach(item => {
+    const parentId = item.parentId
+    sheng.some(v => {
+      if (v.areaId === parentId) {
+        v.children = v.children || []
+        v.children.push(item)
+        return true
+      }
+    })
+  })
+  console.log(quanguo,sheng,shi)
+  </script>
+</body>
+</html>

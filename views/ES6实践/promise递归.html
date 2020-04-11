@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let timer = null
+    function loopLogin () {
+      let n = 2
+      const reqUrl = (resolve, reject) => {
+        console.time('time')
+        if (n > 20) {
+          return reject()
+        }
+        timer = setTimeout(() => {
+          console.timeEnd('time')
+          if (+new Date() % 3 === 0) {
+            console.log('success')
+            resolve(666)
+          } else {
+            console.log('fail')
+            reqUrl(resolve, reject)
+          }
+        }, n * 1000)
+        n += 2 
+      }
+      return new Promise((resolve, reject) => {
+        reqUrl(resolve, reject)
+      })
+    }
+    (async function () {
+      var baz = await loopLogin()
+      console.log(baz)
+    })()
+  </script>
+</body>
+</html>
