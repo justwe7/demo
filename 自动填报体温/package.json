@@ -1,0 +1,15 @@
+{
+  "name": "autobody",
+  "version": "1.0.0",
+  "description": "自动填报体温",
+  "main": "index.js",
+  "scripts": {
+    "submit": "node ./index.js"
+  },
+  "author": "justwe7",
+  "dependencies": {
+    "nodemailer": "^6.4.6",
+    "superagent": "^5.2.2"
+  },
+  "license": "ISC"
+}
