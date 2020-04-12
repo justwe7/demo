@@ -2,7 +2,7 @@ const request = require('superagent')
 const postMail = require('./postmail')
 
 const baseURL = 'http://lyfy.bjchy.gov.cn'
-const adminUuid = '3d468fa0-2173-43a2-8a12-1'
+const adminUuid = '3d468fa0-2173-43a2-8a12-de949f149fa7'
 
 const mobile = '1'
 const password = '1'
@@ -13,21 +13,17 @@ const getForm = () => {
   return (
     request
       .get(`${baseURL}/h5/api/app/${adminUuid}/staff`)
-      .set({
-        Accept: 'application/json, text/plain, */*',
-        'Accept-Encoding': 'gzip, deflate',
-        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-        Authorization: TOKEN,
-        'Cache-Control': 'no-cache',
-        Connection: 'keep-alive',
-        'Content-Type': 'application/json;charset=UTF-8',
-        Host: 'lyfy.bjchy.gov.cn',
-        Pragma: 'no-cache',
-        Referer:
-          `http://lyfy.bjchy.gov.cn/h5/${adminUuid}/input`,
-        'User-Agent':
-          'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
-      })
+      .set('Accept', 'application/json, text/plain, */*')
+      .set('Accept-Encoding', 'gzip, deflate')
+      .set('Accept-Language', 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6')
+      .set('Authorization', TOKEN)
+      .set('Cache-Control', 'no-cache')
+      .set('Connection', 'keep-alive')
+      .set('Content-Type', 'application/json;charset=UTF-8')
+      .set('Host', 'lyfy.bjchy.gov.cn')
+      .set('Pragma', 'no-cache')
+      .set('Referer', `http://lyfy.bjchy.gov.cn/h5/${adminUuid}/input`)
+      .set('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1')
       .then((res) => {
         return res.body.data.staffInfo
       })
@@ -59,22 +55,18 @@ const submit = ({ data }) => {
     request
       .post(baseURL + '/h5/api/app/staff')
       .send(data)
-      .set({
-        Accept: 'application/json, text/plain, */*',
-        'Accept-Encoding': 'gzip, deflate',
-        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-        Authorization: TOKEN,
-        'Cache-Control': 'no-cache',
-        Connection: 'keep-alive',
-        'Content-Type': 'application/json;charset=UTF-8',
-        Host: 'lyfy.bjchy.gov.cn',
-        Origin: 'http://lyfy.bjchy.gov.cn',
-        Pragma: 'no-cache',
-        Referer:
-          `http://lyfy.bjchy.gov.cn/h5/${adminUuid}/input`,
-        'User-Agent':
-          'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
-      })
+      .set('Accept', 'application/json, text/plain, */*')
+      .set('Accept-Encoding', 'gzip, deflate')
+      .set('Accept-Language', 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6')
+      .set('Authorization', TOKEN)
+      .set('Cache-Control', 'no-cache')
+      .set('Connection', 'keep-alive')
+      .set('Content-Type', 'application/json;charset=UTF-8')
+      .set('Host', 'lyfy.bjchy.gov.cn')
+      .set('Origin', 'http://lyfy.bjchy.gov.cn')
+      .set('Pragma', 'no-cache')
+      .set('Referer', `http://lyfy.bjchy.gov.cn/h5/${adminUuid}/input`)
+      .set('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1')
       .then((res) => {
         console.log(res.body)
         if (+res.body.code === 0) {
