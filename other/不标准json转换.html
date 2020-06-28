@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var str = '{20:"https://1251321971.vod2.myqcloud.com/45be9727vodtransgzp1251321971/e2a2a2d29031868223102072070/f0.f20.mp4",230:"https://1251321971.vod2.myqcloud.com/45be9727vodtransgzp1251321971/e2a2a2d29031868223102072070/f0.f230.m3u8",220:"https://1251321971.vod2.myqcloud.com/45be9727vodtransgzp1251321971/e2a2a2d29031868223102072070/f0.f220.m3u8",30:"https://1251321971.vod2.myqcloud.com/45be9727vodtransgzp1251321971/e2a2a2d29031868223102072070/f0.f30.mp4"}'
+    // console.log()
+    console.log(str.replace(/(\d+)(:)/g, function (_, $1, $2) {
+      console.log($1, $2)
+      return `"${$1}"${$2}`
+    }))
+    var o = str.replace(/(\d+)(:")/g, function (_, $1, $2) {
+      console.log($1, $2)
+      return `"${$1}"${$2}`
+    })
+    console.log(JSON.parse(o))
+  </script>
+</body>
+</html>

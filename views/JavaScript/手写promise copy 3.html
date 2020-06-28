@@ -31,7 +31,7 @@
       function resolvePromise(promise2, x, resolve, reject) {
         let then;
         var thenCalledOrThrow = false;
-        if (promise2 === x) {
+        if (promise2 === x) { // 如果promise then返回的状态是自身 死循环抛错
           //如果返回结果和
           return reject(new TypeError("Chaining cycle detected for promise!"));
         }
