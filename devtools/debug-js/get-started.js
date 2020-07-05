@@ -41,3 +41,12 @@ var inputs = document.querySelectorAll('input');
 var label = document.querySelector('p');
 var button = document.querySelector('button');
 button.addEventListener('click', onClick);
+
+$('#send').on('click', function () {
+  $.ajax({
+    url: "https://api-gateway.guahao.com/moduleenterprisepartner/partner/custom/config/model.json",
+    success: function (response) {
+      console.log(response)
+    }
+  });
+})
