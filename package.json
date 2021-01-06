@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/justwe7/justwe7.github.io#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "globby": "^10.0.1",
     "nodemailer": "^6.4.6",
     "superagent": "^5.2.2"
