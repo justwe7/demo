@@ -20,7 +20,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "globby": "^10.0.1",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "superagent": "^5.2.2"
   }
 }
