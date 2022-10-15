@@ -1,26 +1,33 @@
 {
-  "name": "justwe7.github.io",
+  "name": "demo",
   "version": "1.0.0",
   "description": "",
   "main": "publish.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lerna run start",
     "build": "node ./publish.js && git pull origin master && git add . && git commit -m 'update' && git push origin master"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justwe7/justwe7.github.io.git"
+    "url": "git+https://github.com/justwe7/demo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/justwe7/justwe7.github.io/issues"
+    "url": "https://github.com/justwe7/demo/issues"
   },
-  "homepage": "https://github.com/justwe7/justwe7.github.io#readme",
+  "homepage": "https://github.com/justwe7/demo#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "globby": "^10.0.1",
     "nodemailer": "^6.4.6",
     "superagent": "^5.2.2"
-  }
+  },
+  "devDependencies": {
+    "lerna": "^6.0.0"
+  },
+  "workspaces": [
+    "platform",
+    "packages/*"
+  ]
 }
